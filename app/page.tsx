@@ -9,10 +9,10 @@ import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 import MouseTrail from "@/components/mouse-trail"
-import MobileMenu from "@/components/mobile-menu"
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home")
+  const [menuOpen, setMenuOpen] = useState(false)
 
   // Refs for sections
   const homeRef = useRef<HTMLDivElement>(null)
@@ -139,15 +139,60 @@ export default function Portfolio() {
             </ul>
           </div>
 
-          {/* Mobile Navigation */}
-          <MobileMenu
-            links={navLinks.map((item) => ({
-              name: item.name,
-              onClick: () => scrollToSection(item.ref as React.RefObject<HTMLDivElement>),
-            }))}
-            activeSection={activeSection}
-          />
+          {/* Mobile Hamburger Icon */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-gray-300 focus:outline-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {menuOpen && (
+          <motion.div
+            className="md:hidden bg-black/80 backdrop-blur-md absolute top-0 left-0 w-full h-full flex justify-center items-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ul className="flex flex-col items-center space-y-4">
+              {navLinks.map((item) => (
+                <motion.li
+                  key={item.name}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <button
+                    onClick={() => {
+                      scrollToSection(item.ref as React.RefObject<HTMLDivElement>);
+                      setMenuOpen(false); // Close menu after click
+                    }}
+                    className="text-white px-4 py-2"
+                  >
+                    {item.name}
+                  </button>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
       </nav>
 
       {/* Hero Section */}
