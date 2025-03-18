@@ -470,7 +470,7 @@ export default function Portfolio() {
                 description: "A dynamic portfolio website for a front-end developer, featuring responsive design, interactive elements, and smooth animations to showcase my skills and projects effectively.",
                 image: "/portfolio.png?height=600&width=800",
                 tags: ["React", "Framer Motion", "GSAP", "Three.js"],
-                link: "/projects/portfolio"
+                link: "https://github.com/Malshan20/malshandissanayaka.git"
               },
               {
                 title: "E-Sports Tournament Hub",
