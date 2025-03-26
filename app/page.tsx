@@ -603,22 +603,37 @@ export default function Portfolio() {
 
               <h3 className="text-2xl font-bold mt-10 mb-6">Follow Me</h3>
               <div className="flex space-x-4">
-                {[
-                  { icon: <Github className="h-5 w-5" />, name: "GitHub" },
-                  { icon: <Linkedin className="h-5 w-5" />, name: "LinkedIn" },
-                  { icon: <Twitter className="h-5 w-5" />, name: "Twitter" },
-                ].map((social) => (
-                  <motion.a
-                    key={social.name}
-                    href="#"
-                    whileHover={{ y: -5 }}
-                    className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-500/20 hover:text-purple-500 transition-colors"
-                  >
-                    {social.icon}
-                    <span className="sr-only">{social.name}</span>
-                  </motion.a>
-                ))}
-              </div>
+  {[
+    {
+      icon: <Github className="h-5 w-5" />,
+      name: "GitHub",
+      link: "https://github.com/your-username",
+    },
+    {
+      icon: <Linkedin className="h-5 w-5" />,
+      name: "LinkedIn",
+      link: "https://www.linkedin.com/in/your-profile",
+    },
+    {
+      icon: <Twitter className="h-5 w-5" />,
+      name: "Twitter",
+      link: "https://twitter.com/your-handle",
+    },
+  ].map((social) => (
+    <motion.a
+      key={social.name}
+      href={social.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ y: -5 }}
+      className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-500/20 hover:text-purple-500 transition-colors"
+    >
+      {social.icon}
+      <span className="sr-only">{social.name}</span>
+    </motion.a>
+  ))}
+</div>
+
             </motion.div>
 
             <motion.div
