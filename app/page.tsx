@@ -607,17 +607,17 @@ export default function Portfolio() {
     {
       icon: <Github className="h-5 w-5" />,
       name: "GitHub",
-      link: "https://github.com/your-username",
+      link: "https://github.com/Malshan20",
     },
     {
       icon: <Linkedin className="h-5 w-5" />,
       name: "LinkedIn",
-      link: "https://www.linkedin.com/in/your-profile",
+      link: "https://www.linkedin.com/in/maleeshamalshan/",
     },
     {
       icon: <Twitter className="h-5 w-5" />,
       name: "Twitter",
-      link: "https://twitter.com/your-handle",
+      link: "https://x.com/Ma_malshan",
     },
   ].map((social) => (
     <motion.a
